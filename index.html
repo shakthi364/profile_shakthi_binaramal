@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakthi Binaramal Fernando | Cyber Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Devicons (For the technology icons at the bottom) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome (For small UI icons like rocket, code, user, download) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blood: '#ff1e1e',
+                        darkbg: '#050608',
+                        cardbg: '#0d0f13',
+                        panelbg: 'rgba(13, 15, 19, 0.7)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                        brush: ['Permanent Marker', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050608;
+            color: #b3b9c1;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050608;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff1e1e;
+            border-radius: 4px;
+        }
+
+        .hero-bg-text {
+            font-size: 11vw;
+            line-height: 0.85;
+            color: rgba(255, 30, 30, 0.06);
+            text-shadow: 0 0 40px rgba(255, 30, 30, 0.1);
+            user-select: none;
+            transform: rotate(-4deg);
+        }
+
+        .btn-glow {
+            background: linear-gradient(90deg, rgba(255, 42, 42, 0.1) 0%, rgba(255, 42, 42, 0.3) 100%);
+            border: 1px solid rgba(255, 42, 42, 0.5);
+            box-shadow: 0 0 15px rgba(255, 42, 42, 0.2);
+        }
+
+        .character-glow {
+            filter: drop-shadow(0 0 50px rgba(255, 30, 30, 0.35));
+        }
+
+        .glass-nav {
+            background: rgba(5, 6, 8, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .tech-badge {
+            background: rgba(13, 15, 19, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0% 88%, 0% 12%);
+            transition: all 0.3s ease;
+        }
+
+        .tech-hexagon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-hexagon:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .cyber-panel {
+            background: #0d0f13;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .cyber-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: #ff1e1e;
+            transition: height 0.4s ease;
+        }
+
+        .cyber-panel:hover::before {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-blood selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav py-4 px-6 md:px-16 flex justify-between items-center">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="relative w-8 h-8 flex items-center justify-center">
+                <div
+                    class="absolute inset-0 bg-blood rounded-bl-xl rounded-tr-xl opacity-80 group-hover:rotate-90 transition-transform duration-500">
+                </div>
+                <span class="relative font-tech font-black text-white text-base z-10">S</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-tech font-black text-white tracking-widest text-sm leading-none">CODE WARRIOR</span>
+                <span class="text-[9px] tracking-[0.3em] text-gray-500 font-tech">SHAKTHI BINARAMAL</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex space-x-8 font-tech text-[10px] tracking-[0.2em] text-gray-400">
+            <a href="#home" class="text-blood transition duration-300">HOME</a>
+            <a href="#about" class="hover:text-blood transition duration-300">ABOUT</a>
+            <a href="#skills" class="hover:text-blood transition duration-300">ARSENAL</a>
+            <a href="#experience" class="hover:text-blood transition duration-300">EXPERIENCE</a>
+            <a href="#projects" class="hover:text-blood transition duration-300">PROJECTS</a>
+            <a href="#education" class="hover:text-blood transition duration-300">EDUCATION</a>
+        </div>
+
+        <a href="#contact"
+            class="border border-blood/50 text-white hover:bg-blood hover:border-blood px-5 py-2 rounded font-tech text-[10px] tracking-widest transition-all duration-300 flex items-center gap-2">
+            CONTACT US <span class="text-xs">→</span>
+        </a>
+    </nav>
+
+    <section id="home"
+        class="relative min-h-screen flex flex-col justify-between pt-28 lg:pt-20 pb-8 overflow-hidden px-6 md:px-16 max-w-[1600px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center w-full relative z-10">
+
+            <div class="lg:col-span-5 flex flex-col justify-center text-left order-2 lg:order-1 mt-6 lg:mt-0">
+                <span class="text-blood font-tech tracking-[0.25em] text-xs font-bold mb-2 uppercase">OPERATIONAL
+                    OVERVIEW</span>
+                <h1
+                    class="font-tech text-4xl md:text-6xl lg:text-[5rem] font-black text-white leading-[0.95] tracking-tight uppercase">
+                    SOFTWARE<br>
+                    <span class="text-blood">ENGINEER</span>
+                </h1>
+
+                <div class="border-l-[3px] border-blood pl-5 my-6 max-w-md">
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed font-sans">
+                        I build scalable web applications and turn architectural ideas into secure, high-performance
+                        reality.
+                    </p>
+                </div>
+
+                <div class="flex gap-4 mt-10">
+                    <a href="#"
+                        class="btn-glow text-white px-8 py-3 rounded font-sans font-medium tracking-wider flex items-center gap-3 transition hover:scale-105">
+                        VIEW MY WORK <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#"
+                        class="border border-gray-600 text-gray-300 px-8 py-3 rounded font-sans font-medium tracking-wider flex items-center gap-3 hover:border-white hover:text-white transition hover:scale-105">
+                        DOWNLOAD CV <i class="fa-solid fa-download text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 border-t border-white/5 pt-10 max-w-lg">
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 border border-gray-700 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-rocket text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-tech font-black text-white leading-none">06+</h3>
+                            <p class="text-[9px] text-gray-500 font-tech uppercase tracking-wider mt-1">Deployments</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 border-x border-white/5 px-2">
+                        <div class="w-14 h-14 border border-gray-700 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-code text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-tech font-black text-white leading-none">15+</h3>
+                            <p class="text-[9px] text-gray-500 font-tech uppercase tracking-wider mt-1">Core Weapons</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 pl-2">
+                        <div class="w-14 h-14 border border-gray-700 rounded-lg flex items-center justify-center">
+                            <i class="fa-regular fa-user text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-tech font-black text-white leading-none">3+</h3>
+                            <p class="text-[9px] text-gray-500 font-tech uppercase tracking-wider mt-1">Years Track</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="lg:col-span-7 relative flex items-center justify-center order-1 lg:order-2 min-h-[380px] lg:min-h-[520px]">
+                <div
+                    class="absolute inset-0 flex items-center justify-center z-0 select-none overflow-hidden pointer-events-none">
+                    <div
+                        class="hero-bg-text font-brush text-center uppercase tracking-tighter opacity-60 whitespace-nowrap text-[8vw]">
+                        SHAKTHI<br>BINARAMAL
+                    </div>
+                </div>
+
+                <div class="relative w-full max-w-md lg:max-w-xl h-full flex items-end justify-center z-10">
+                    <div class="absolute w-82 h-82 rounded-full bg-blood/10 blur-[100px] top-1/4 left-1/4"></div>
+                    <img src="./res/profile.png" alt="Shakthi Binaramal"
+                        class="w-auto max-h-[640px] lg:max-h-[760px] object-contain character-glow relative z-10 transition-all duration-500"
+                        style="mask-image: linear-gradient(to top, transparent 0%, black 15%); -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Technologies Bar -->
+        <div class="w-full relative z-20 pb-8 px-10">
+
+            <!-- Divider with Text -->
+            <div class="max-w-5xl mx-auto flex items-center gap-6 mb-6 opacity-60">
+                <div class="h-px bg-gradient-to-r from-transparent to-gray-600 flex-1"></div>
+                <span class="font-sans text-gray-400 text-sm tracking-[0.2em] uppercase">Technologies I Work With</span>
+                <div class="h-px bg-gradient-to-l from-transparent to-gray-600 flex-1"></div>
+            </div>
+
+            <!-- Tech Icons List -->
+            <div class="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
+                <!-- HTML5 -->
+                <div class="tech-hexagon">
+                    <i class="devicon-html5-plain colored"></i>
+                </div>
+                <!-- CSS3 -->
+                <div class="tech-hexagon">
+                    <i class="devicon-css3-plain colored"></i>
+                </div>
+                <!-- JavaScript -->
+                <div class="tech-hexagon">
+                    <i class="devicon-javascript-plain colored"></i>
+                </div>
+                <!-- React -->
+                <div class="tech-hexagon">
+                    <i class="devicon-react-original colored"></i>
+                </div>
+                <!-- Node.js (or similar green icon) -->
+                <div class="tech-hexagon">
+                    <i class="devicon-nodejs-plain colored"></i>
+                </div>
+                <!-- Python -->
+                <div class="tech-hexagon">
+                    <i class="devicon-python-plain colored"></i>
+                </div>
+                <!-- Git -->
+                <div class="tech-hexagon">
+                    <i class="devicon-git-plain colored"></i>
+                </div>
+                <!-- PostgreSQL -->
+                <div class="tech-hexagon">
+                    <i class="devicon-postgresql-plain colored"></i>
+                </div>
+            </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 max-w-6xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-7">
+                <p class="text-blood font-tech text-xs tracking-widest uppercase mb-2">IDENTITY CORE</p>
+                <h2 class="text-3xl font-tech font-bold text-white mb-6 uppercase tracking-wider">Profile Strategy</h2>
+                <p class="text-gray-400 leading-relaxed text-base md:text-lg font-sans mb-6">
+                    Passionate and proactive Software Engineer with hands-on experience in PHP, C#, and .NET
+                    development. Skilled in database management using MySQL and SQL Server, and adept at resolving
+                    day-to-day software-related issues. Possesses a strong collaborative mindset, excelling in
+                    fast-paced environments with a knack for troubleshooting and maintaining software solutions.
+                    Equipped with an added advantage in Graphic Designing (UI/UX) to deliver visually appealing
+                    solutions. Eager to ensure smooth IT operations and contribute to organizational success.
+                </p>
+            </div>
+
+            <div class="lg:col-span-5 bg-cardbg p-8 rounded-xl border border-white/5 relative overflow-hidden">
+                <div
+                    class="absolute -right-6 -bottom-6 font-brush text-8xl text-white/[0.01] select-none pointer-events-none">
+                    TACTICS</div>
+                <h3 class="text-sm font-tech font-bold text-white tracking-widest uppercase mb-4 text-blood">SOFT SKILLS
+                    INTEGRATION</h3>
+                <ul class="space-y-3 font-sans text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><span class="text-blood">▪</span> Software Troubleshooting &
+                        Resolution</li>
+                    <li class="flex items-center gap-3"><span class="text-blood">▪</span> System Architecture & Data
+                        Flow Diagrams</li>
+                    <li class="flex items-center gap-3"><span class="text-blood">▪</span> Teamwork & Collaborative
+                        Mindset</li>
+                    <li class="flex items-center gap-3"><span class="text-blood">▪</span> Dynamic Adaptability & Time
+                        Management</li>
+                    <li class="flex items-center gap-3"><span class="text-blood">▪</span> Hardworking & Detail Oriented
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-cardbg px-6 border-y border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-blood font-tech text-xs tracking-widest uppercase mb-2 text-center">FULL ARSENAL INDEX</p>
+            <h2 class="text-3xl font-tech font-bold text-white mb-16 text-center uppercase tracking-wider">The Weaponry
+                Matrix</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Languages</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">PHP, C#, .NET, Java, JavaScript, C++, SQL
+                    </p>
+                </div>
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Frontend & Design</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">HTML, CSS, Tailwind CSS, Bootstrap,
+                        React.js, React Native, Canva, Figma</p>
+                </div>
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Databases</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">MySQL, SQL Server (DBMS), Firebase,
+                        MongoDB, Hibernate</p>
+                </div>
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Backend Architecture</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">Laravel, Node.js (Full-Stack
+                        environments)</p>
+                </div>
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Mobile Environments</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">Android Ecosystem, React Native
+                        Frameworks</p>
+                </div>
+                <div class="p-6 bg-darkbg/50 border border-white/5 rounded-lg">
+                    <h4 class="font-tech text-xs text-white tracking-widest border-b border-blood pb-2 mb-4 uppercase">
+                        Tools & Platforms</h4>
+                    <p class="text-sm text-gray-400 font-sans leading-relaxed">VS Code, Git & GitHub, IntelliJ IDEA,
+                        NetBeans, Android Studio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 px-6 max-w-6xl mx-auto">
+        <p class="text-blood font-tech text-xs tracking-widest uppercase mb-2">BATTLE RECORDS</p>
+        <h2 class="text-3xl font-tech font-bold text-white mb-12 uppercase tracking-wider">Work Experience</h2>
+
+        <div class="bg-cardbg p-8 rounded-xl border border-white/5 relative overflow-hidden">
+            <div
+                class="absolute right-4 top-4 font-tech text-xs text-blood px-3 py-1 bg-blood/10 rounded border border-blood/20">
+                COLLABORATOR</div>
+            <span class="font-tech text-xs text-gray-500 block mb-1">PRO ARCHITECT</span>
+            <h3 class="text-2xl font-bold text-white">CeylonGen International (Pvt) Ltd.</h3>
+            <p class="text-blood font-tech text-sm mt-1 mb-4">UI/UX Designer and Front-End Development Collaborator</p>
+            <p class="text-sm text-gray-400 leading-relaxed font-sans max-w-3xl">
+                Executed complex structural interfaces, visual engineering layouts, and robust front-end components
+                ensuring adaptive screen-responsive optimization and premium system designs.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto border-t border-white/5">
+        <p class="text-blood font-tech text-xs tracking-widest uppercase mb-2 text-center">FORGED SYSTEM ARCHITECTURES
+        </p>
+        <h2 class="text-3xl font-tech font-bold text-white mb-16 text-center uppercase tracking-wider">Projects Arsenal
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./beforepay-1.jpg" alt="Image 1" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./beforepay-2.jpg" alt="Image 2" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./beforepay-3.jpg" alt="Image 3" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./beforepay-4.jpg" alt="Image 4" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Fintech Verification Framework</span>
+                <h3 class="text-xl font-bold text-white mb-2">BeforePay</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    A platform designed to assess the authenticity of users and shops before processing online payments.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">PHP</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">TAILWIND CSS</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JS</span>
+                </div>
+                <a href="https://beforepay.lk" target="_blank"
+                    class="text-xs font-tech text-blood hover:underline flex items-center gap-1 mt-auto">SECURE GATEWAY
+                    →</a>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/frash_shop/1.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/2.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/3.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/4.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/5.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/6.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/7.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/8.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/frash_shop/9.jpg" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">E-Commerce Deployment</span>
+                <h3 class="text-xl font-bold text-white mb-2">FreshShop</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    Electronics E-commerce web network engineered with relational database architectures.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">PHP</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">BOOTSTRAP</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">SQL</span>
+                </div>
+                <span class="text-xs font-tech text-gray-600 mt-auto">INTERNAL NETWORK</span>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/lava_chat/1.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/2.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/3.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/4.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/5.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/6.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/7.jpg" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/lava_chat/8.jpg" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Real-time Mobile Encrypted</span>
+                <h3 class="text-xl font-bold text-white mb-2">LavaChat</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    React Native mobile messaging architecture optimized with Java multi-threaded backends.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">REACT NATIVE</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JAVA</span>
+                </div>
+                <span class="text-xs font-tech text-gray-600 mt-auto">SECURE SHELL</span>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/azutine/2.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/azutine/3.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/azutine/4.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/azutine/5.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/azutine/6.png" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Java POS Enterprise</span>
+                <h3 class="text-xl font-bold text-white mb-2">Azutine</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    Java-based enterprise Point of Sale platform integrated with structured database mappings.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JAVA</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">MYSQL</span>
+                </div>
+                <span class="text-xs font-tech text-gray-600 mt-auto">LOCAL HUB</span>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/horana_city/1.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/2.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/3.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/4.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/5.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/6.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/7.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/horana_city/8.png"
+                            class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Web Application</span>
+                <h3 class="text-xl font-bold text-white mb-2">Horana City Hardware</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    HTML/CSS business website for hardware retail with integrated product catalog and contact form.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">HTML5</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">TAILWIND CSS</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JS</span>
+                </div>
+                <a href="https://www.cityhardwarestores.com" target="_blank"
+                    class="text-xs font-tech text-blood hover:underline flex items-center gap-1 mt-auto">WEB LINK →</a>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/prime_web/1.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/2.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/3.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/4.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/5.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/6.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/7.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/prime_web/8.png" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Agri Web Infrastructure</span>
+                <h3 class="text-xl font-bold text-white mb-2">Prime Plantation</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    High-end operational web interface optimized for visual architecture deployments.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">HTML5</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">TAILWIND CSS</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JS</span>
+                </div>
+                <a href="http://primeagriplantation.lk" target="_blank"
+                    class="text-xs font-tech text-blood hover:underline flex items-center gap-1 mt-auto">WEB LINK →</a>
+            </div>
+
+            <div
+                class="cyber-panel p-6 rounded-xl transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,42,42,0.15)] bg-[#0d0f17] border border-white/5">
+                <div class="w-full h-40 mb-5 overflow-hidden rounded-lg border border-white/10 relative carousel-container group/slider"
+                    data-index="0">
+                    <div class="flex w-full h-full transition-transform duration-500 ease-in-out carousel-track">
+                        <img src="./res/project_image/global_apparels/1.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/global_apparels/2.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/global_apparels/3.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/global_apparels/4.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/global_apparels/5.png" class="w-full h-full object-cover flex-shrink-0">
+                        <img src="./res/project_image/global_apparels/6.png" class="w-full h-full object-cover flex-shrink-0">
+                    </div>
+                    <button onclick="moveSlide(this, -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10094;</button>
+                    <button onclick="moveSlide(this, 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/70 text-white rounded-full opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-blood z-10 text-xs shadow-lg">&#10095;</button>
+                </div>
+
+                <span class="text-xs font-tech text-blood mb-2 block">Fabrics Web Infrastructure</span>
+                <h3 class="text-xl font-bold text-white mb-2">Global Apparels Web</h3>
+                <p class="text-gray-400 text-sm mb-4 font-sans h-20 overflow-hidden flex-grow">
+                    A web interface for a fabrics and apparels business, designed with responsive layouts and interactive
+                    elements.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 font-tech mb-4">
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">HTML5</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">TAILWIND CSS</span>
+                    <span class="bg-darkbg px-2 py-0.5 rounded border border-white/5">JS</span>
+                </div>
+                <a href="https://shakthi364.github.io/global_apparal_web/" target="_blank"
+                    class="text-xs font-tech text-blood hover:underline flex items-center gap-1 mt-auto">WEB LINK →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education" class="py-24 px-6 max-w-4xl mx-auto">
+        <p class="text-blood font-tech text-xs tracking-widest uppercase mb-2 text-center">SCROLLS OF EVOLUTION</p>
+        <h2 class="text-3xl font-tech font-bold text-white mb-16 text-center uppercase tracking-wider">Knowledge Graph
+        </h2>
+
+        <div class="relative border-l border-white/10 ml-4 md:ml-32 space-y-12">
+            <div class="relative pl-8 group">
+                <div
+                    class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-blood group-hover:scale-150 transition-transform shadow-[0_0_8px_#ff2a2a]">
+                </div>
+                <span class="font-tech text-xs text-blood block mb-1">2023 - PRESENT</span>
+                <h3 class="text-xl font-bold text-white">BEng (Hons) in Software Engineering</h3>
+                <p class="text-sm text-gray-400 mt-1 font-sans">Java Institute for Advanced Technology, Colombo</p>
+            </div>
+
+            <div class="relative pl-8 group">
+                <div
+                    class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gray-700 group-hover:bg-blood transition-colors">
+                </div>
+                <span class="font-tech text-xs text-gray-500 block mb-1">2021</span>
+                <h3 class="text-xl font-bold text-white">Diploma in English</h3>
+                <p class="text-sm text-gray-400 mt-1 font-sans">British Way English Academy</p>
+            </div>
+
+            <div class="relative pl-8 group">
+                <div
+                    class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gray-700 group-hover:bg-blood transition-colors">
+                </div>
+                <span class="font-tech text-xs text-gray-500 block mb-1">2018</span>
+                <h3 class="text-xl font-bold text-white">Computer Training Course Certification</h3>
+                <p class="text-sm text-gray-400 mt-1 font-sans">NAC Computer Training Centre</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-cardbg px-6 border-t border-white/5 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-tech font-bold text-white mb-6 uppercase tracking-wider">Initialize Connection</h2>
+            <p class="text-gray-400 mb-12 max-w-xl mx-auto font-sans">Establish secure operational transmission or
+                review systemic credentials.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto mb-12 font-sans text-sm">
+                <div class="bg-darkbg p-4 rounded border border-white/5">
+                    <span class="text-blood font-tech text-xs block mb-1">SECURE COMMS</span>
+                    <p class="text-gray-300">+94 788783203</p>
+                </div>
+                <div class="bg-darkbg p-4 rounded border border-white/5">
+                    <span class="text-blood font-tech text-xs block mb-1">DIRECT LINK</span>
+                    <p class="text-gray-300">binarafernando365@gmail.com</p>
+                </div>
+                <div class="bg-darkbg p-4 rounded border border-white/5">
+                    <span class="text-blood font-tech text-xs block mb-1">COORDINATES</span>
+                    <p class="text-gray-300">Rakwana, Sri Lanka</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="mailto:binarafernando365@gmail.com"
+                    class="w-full sm:w-auto bg-blood hover:bg-red-700 text-white font-tech tracking-wider px-10 py-4 rounded shadow-[0_0_15px_rgba(255,42,42,0.3)] transition duration-300">
+                    SECURE TRANSMIT EMAIL
+                </a>
+                <a href="https://github.com/shakthi364" target="_blank"
+                    class="w-full sm:w-auto border border-gray-700 text-gray-300 hover:border-white hover:text-white font-tech tracking-wider px-10 py-4 rounded transition duration-300">
+                    GITHUB GATEWAY
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-darkbg py-8 text-center border-t border-white/5">
+        <p class="text-[10px] text-gray-600 font-tech uppercase tracking-[0.25em]">&copy; 2026 Shakthi Binaramal
+            Fernando. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.from("h1", { x: -40, opacity: 0, duration: 1.2, ease: "power4.out" });
+            gsap.from(".character-glow", { scale: 0.95, opacity: 0, duration: 1.4, ease: "power3.out", delay: 0.2 });
+            gsap.from(".hero-bg-text", { scale: 1.15, opacity: 0, duration: 1.6, ease: "power2.out" });
+            // gsap.from(".tech-badge", { y: 15, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out", delay: 0.5 });
+        });
+
+        function moveSlide(btn, direction) {
+            // Find the main container of the slider
+            const container = btn.closest('.carousel-container');
+            const track = container.querySelector('.carousel-track');
+            const images = track.querySelectorAll('img');
+            const totalImages = images.length;
+
+            // Get current index (default 0)
+            let currentIndex = parseInt(container.getAttribute('data-index')) || 0;
+
+            // Update index
+            currentIndex += direction;
+
+            // Loop around if it goes out of bounds
+            if (currentIndex < 0) currentIndex = totalImages - 1;
+            if (currentIndex >= totalImages) currentIndex = 0;
+
+            // Save the new index and animate the track
+            container.setAttribute('data-index', currentIndex);
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+</body>
+
+</html>
