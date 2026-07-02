@@ -10,20 +10,20 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <!-- Devicons (For the technology icons at the bottom) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- FontAwesome (For small UI icons like rocket, code, user, download) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 
     <script>
         tailwind.config = {
@@ -44,100 +44,6 @@
             }
         }
     </script>
-
-    <style>
-        body {
-            background-color: #050608;
-            color: #b3b9c1;
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050608;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff1e1e;
-            border-radius: 4px;
-        }
-
-        .hero-bg-text {
-            font-size: 11vw;
-            line-height: 0.85;
-            color: rgba(255, 30, 30, 0.06);
-            text-shadow: 0 0 40px rgba(255, 30, 30, 0.1);
-            user-select: none;
-            transform: rotate(-4deg);
-        }
-
-        .btn-glow {
-            background: linear-gradient(90deg, rgba(255, 42, 42, 0.1) 0%, rgba(255, 42, 42, 0.3) 100%);
-            border: 1px solid rgba(255, 42, 42, 0.5);
-            box-shadow: 0 0 15px rgba(255, 42, 42, 0.2);
-        }
-
-        .character-glow {
-            filter: drop-shadow(0 0 50px rgba(255, 30, 30, 0.35));
-        }
-
-        .glass-nav {
-            background: rgba(5, 6, 8, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        .tech-badge {
-            background: rgba(13, 15, 19, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0% 88%, 0% 12%);
-            transition: all 0.3s ease;
-        }
-
-        .tech-hexagon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            font-size: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .tech-hexagon:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .cyber-panel {
-            background: #0d0f13;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            position: relative;
-        }
-
-        .cyber-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: #ff1e1e;
-            transition: height 0.4s ease;
-        }
-
-        .cyber-panel:hover::before {
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body class="antialiased selection:bg-blood selection:text-white">
@@ -722,34 +628,7 @@
     </footer>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            gsap.from("h1", { x: -40, opacity: 0, duration: 1.2, ease: "power4.out" });
-            gsap.from(".character-glow", { scale: 0.95, opacity: 0, duration: 1.4, ease: "power3.out", delay: 0.2 });
-            gsap.from(".hero-bg-text", { scale: 1.15, opacity: 0, duration: 1.6, ease: "power2.out" });
-            // gsap.from(".tech-badge", { y: 15, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out", delay: 0.5 });
-        });
-
-        function moveSlide(btn, direction) {
-            // Find the main container of the slider
-            const container = btn.closest('.carousel-container');
-            const track = container.querySelector('.carousel-track');
-            const images = track.querySelectorAll('img');
-            const totalImages = images.length;
-
-            // Get current index (default 0)
-            let currentIndex = parseInt(container.getAttribute('data-index')) || 0;
-
-            // Update index
-            currentIndex += direction;
-
-            // Loop around if it goes out of bounds
-            if (currentIndex < 0) currentIndex = totalImages - 1;
-            if (currentIndex >= totalImages) currentIndex = 0;
-
-            // Save the new index and animate the track
-            container.setAttribute('data-index', currentIndex);
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+        
     </script>
 </body>
 
